@@ -1,18 +1,14 @@
 # Introduction
 
-
-
-https://blog.csdn.net/iamzhongyong/article/details/9297421
-https://github.com/yujikiriki/jtop/tree/develop
 https://github.com/andrewglowacki/jtop
-
+https://blog.csdn.net/iamzhongyong/article/details/9297421
 https://blog.csdn.net/iamzhongyong/article/details/9297557
 https://www.iteye.com/blog/iamzhongyong-1742829
 
 # Usage
 
 Get jtop:
-Get `jtop.jar` from 
+Get `jtop.jar` from
 
 Usage:
 

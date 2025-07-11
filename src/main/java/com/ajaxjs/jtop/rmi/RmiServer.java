@@ -1,7 +1,7 @@
 package com.ajaxjs.jtop.rmi;
 
 import com.ajaxjs.jtop.rmi.interfaces.*;
-import me.hatter.tools.commons.reflect.ReflectUtil;
+import me.hatter.tools.commons.object.ReflectUtil;
 
 import java.lang.management.*;
 import java.util.ArrayList;

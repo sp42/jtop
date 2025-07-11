@@ -4,38 +4,74 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="2dda72c1-eb06-4679-96a7-84801ba4d56e" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/jarRepositories.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/uiDesigner.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.classpath" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/.name" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/compiler.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/compiler.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/encodings.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/modules.xml" beforeDir="false" />
+    <list default="true" id="2dda72c1-eb06-4679-96a7-84801ba4d56e" name="Changes" comment="init">
+      <change afterPath="$PROJECT_DIR$/lib/commons-1.0/META-INF/MANIFEST.MF" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/lib/commons-1.0/atests/ClearAndOutput.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/lib/commons-1.0/atests/NewColorFont.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/lib/commons-1.0/atests/Shutdown.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/lib/commons-1.0/commons-resources/jline-2.9.jar" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/ajaxjs/jtop/util/CollectionUtil.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/ajaxjs/jtop/util/ConsoleUtil.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/ajaxjs/jtop/util/ExceptionUtil.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/ajaxjs/jtop/util/JDKUtil.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/ajaxjs/jtop/util/LocalHostUtil.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/ajaxjs/jtop/util/ManagementUtil.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/me/hatter/tools/commons/agent/AgentArgs.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/me/hatter/tools/commons/agent/AgentUtil.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/me/hatter/tools/commons/args/ArgsUtil.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/me/hatter/tools/commons/args/PICArgs.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/me/hatter/tools/commons/args/UnixArgsutil.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/me/hatter/tools/commons/bytes/ByteCodeUtil.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/me/hatter/tools/commons/bytes/ByteUtil.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/me/hatter/tools/commons/color/Color.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/me/hatter/tools/commons/color/Font.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/me/hatter/tools/commons/color/Position.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/me/hatter/tools/commons/color/Text.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/me/hatter/tools/commons/concurrent/ExecutorUtil.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/me/hatter/tools/commons/concurrent/OneThreadExecutor.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/me/hatter/tools/commons/environment/Environment.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/me/hatter/tools/commons/file/FileUtil.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/me/hatter/tools/commons/file/JavaUtil.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/me/hatter/tools/commons/file/JavaWalkTool.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/me/hatter/tools/commons/io/FileBufferedReader.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/me/hatter/tools/commons/io/FilePrintWriter.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/me/hatter/tools/commons/io/IOUtil.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/me/hatter/tools/commons/io/StringBufferedReader.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/me/hatter/tools/commons/io/StringPrintWriter.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/me/hatter/tools/commons/jmx/CustomJMXConnectTool.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/me/hatter/tools/commons/jmx/HotSpotJMXConnectTool.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/me/hatter/tools/commons/jmx/RemoteManagementFactory.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/me/hatter/tools/commons/jmx/RemoteManagementTool.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/me/hatter/tools/commons/jvm/HotSpotAttachTool.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/me/hatter/tools/commons/jvm/HotSpotProcessUtil.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/me/hatter/tools/commons/jvm/HotSpotProcessVM.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/me/hatter/tools/commons/jvm/HotSpotVMUtil.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/me/hatter/tools/commons/main/Main.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/me/hatter/tools/commons/misc/Base64.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/me/hatter/tools/commons/misc/ShutdownSignal.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/me/hatter/tools/commons/object/CountingMap.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/me/hatter/tools/commons/object/IntegerUtil.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/me/hatter/tools/commons/object/LogUtil.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/me/hatter/tools/commons/object/LongUtil.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/me/hatter/tools/commons/object/OSUtil.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/me/hatter/tools/commons/object/ObjectUtil.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/me/hatter/tools/commons/object/ProcessTool.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/me/hatter/tools/commons/object/ReflectUtil.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/me/hatter/tools/commons/object/RegexUtil.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/me/hatter/tools/commons/object/StringUtil.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/me/hatter/tools/commons/object/XmlParser.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/me/hatter/tools/commons/resource/Resource.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/me/hatter/tools/commons/resource/ResourceUtil.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/me/hatter/tools/commons/resource/impl/ClassPathResource.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/me/hatter/tools/commons/resource/impl/FileResource.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/me/hatter/tools/commons/screen/Printer.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/me/hatter/tools/commons/screen/TermUtils.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/me/hatter/tools/commons/screen/impl/BatchOutputScreenPrinter.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/me/hatter/tools/commons/screen/impl/NormalPrinter.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/me/hatter/tools/commons/screen/impl/ScreenPrinter.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.project" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.settings/org.eclipse.jdt.core.prefs" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/jtop.iml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/jtop.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/me/hatter/tools/jtop/agent/Agent.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/ajaxjs/jtop/Agent.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/me/hatter/tools/jtop/main/Main.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/me/hatter/tools/jtop/main/objects/MainOutput.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/ajaxjs/jtop/objects/MainOutput.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/me/hatter/tools/jtop/main/objects/ThreadOutput.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/ajaxjs/jtop/objects/ThreadOutput.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/me/hatter/tools/jtop/management/JTopImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/ajaxjs/jtop/management/JTopImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/me/hatter/tools/jtop/management/JTopMXBean.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/ajaxjs/jtop/management/JTopMXBean.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/me/hatter/tools/jtop/rmi/RmiClient.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/ajaxjs/jtop/rmi/RmiClient.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/me/hatter/tools/jtop/rmi/RmiServer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/ajaxjs/jtop/rmi/RmiServer.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/me/hatter/tools/jtop/rmi/exception/ServiceNotStartedException.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/ajaxjs/jtop/rmi/ServiceNotStartedException.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/me/hatter/tools/jtop/rmi/interfaces/JClassLoadingInfo.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/ajaxjs/jtop/rmi/interfaces/JClassLoadingInfo.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/me/hatter/tools/jtop/rmi/interfaces/JGCInfo.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/ajaxjs/jtop/rmi/interfaces/JGCInfo.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/me/hatter/tools/jtop/rmi/interfaces/JMemoryInfo.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/ajaxjs/jtop/rmi/interfaces/JMemoryInfo.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/me/hatter/tools/jtop/rmi/interfaces/JMemoryUsage.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/ajaxjs/jtop/rmi/interfaces/JMemoryUsage.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/me/hatter/tools/jtop/rmi/interfaces/JThreadInfo.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/ajaxjs/jtop/rmi/interfaces/JThreadInfo.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/me/hatter/tools/jtop/rmi/interfaces/StackTraceElement.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/ajaxjs/jtop/rmi/interfaces/StackTraceElement.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/me/hatter/tools/jtop/util/EnvUtil.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/ajaxjs/jtop/EnvUtil.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/ajaxjs/jtop/rmi/RmiServer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/ajaxjs/jtop/rmi/RmiServer.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -55,20 +91,27 @@
       </MavenGeneralSettings>
     </option>
   </component>
+  <component name="MavenRunner">
+    <option name="skipTests" value="true" />
+  </component>
   <component name="ProjectId" id="2zOs5piG5PMpb2BNvY7YmrbHyKL" />
+  <component name="ProjectLevelVcsManager">
+    <ConfirmationsSetting value="2" id="Add" />
+  </component>
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
   <component name="PropertiesComponent"><![CDATA[{
   "keyToString": {
+    "ASKED_ADD_EXTERNAL_FILES": "true",
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "SHARE_PROJECT_CONFIGURATION_FILES": "true",
     "git-widget-placeholder": "develop",
     "last_opened_file_path": "D:/sp42/code/opensource/jtop/pom.xml",
     "project.structure.last.edited": "SDKs",
     "project.structure.proportion": "0.15",
-    "project.structure.side.proportion": "0.2",
+    "project.structure.side.proportion": "0.32528734",
     "settings.editor.selected.configurable": "reference.projectsettings.compiler.javacompiler"
   }
 }]]></component>
@@ -86,6 +129,20 @@
       <option name="presentableId" value="Default" />
       <updated>1751613273758</updated>
     </task>
+    <task id="LOCAL-00001" summary="init">
+      <option name="closed" value="true" />
+      <created>1752213939906</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1752213939906</updated>
+    </task>
+    <option name="localTasksCounter" value="2" />
     <servers />
+  </component>
+  <component name="VcsManagerConfiguration">
+    <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
+    <MESSAGE value="init" />
+    <option name="LAST_COMMIT_MESSAGE" value="init" />
   </component>
 </project>
