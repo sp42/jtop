@@ -1,11 +1,16 @@
 # Introduction
 
 https://github.com/andrewglowacki/jtop
-https://blog.csdn.net/iamzhongyong/article/details/9297421
 https://blog.csdn.net/iamzhongyong/article/details/9297557
-https://www.iteye.com/blog/iamzhongyong-1742829
 
 # Usage
+
+在排查线上问题的时候，我们经常使用jstat、jstack、jmap查看GC、内存、线程的信息，
+但是有时候我们需要获取一个整体的信息来帮助我们快速定位，类似linux中自带的top命令，简单而全面的系统信息，
+在网上找了些资料，发现之前有人写了个jtop的工具，能够全面获取java应用的信息.
+原理是使用了java中的MBean，借这个机会，把MBean的东西简单了解一下
+
+查看占用CPU前三的线程栈信息（sudo -u admin java -cp jtop.jar jtop -thread 3 -stack 50 --summaryoff  PID）
 
 Get jtop:
 Get `jtop.jar` from
