@@ -1,12 +1,11 @@
-package me.hatter.tools.jtop.rmi;
+package com.ajaxjs.jtop.rmi;
 
+import com.ajaxjs.jtop.Agent;
+import com.ajaxjs.jtop.management.JTopMXBean;
 import me.hatter.tools.commons.jmx.CustomJMXConnectTool;
-import me.hatter.tools.jtop.agent.Agent;
-import me.hatter.tools.jtop.management.JTopMXBean;
 
 public class RmiClient {
-
-    private String     pid;
+    private String pid;
     private JTopMXBean jtopMXBean;
 
     public RmiClient(String pid) {
@@ -18,6 +17,7 @@ public class RmiClient {
             CustomJMXConnectTool tool = new CustomJMXConnectTool(pid, Agent.AGENT_INIT_KEY, Agent.class);
             jtopMXBean = tool.getCustomMXBean(JTopMXBean.class, JTopMXBean.JTOP_MXBEAN_NAME);
         }
+
         return jtopMXBean;
     }
 }

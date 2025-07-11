@@ -1,20 +1,18 @@
-package me.hatter.tools.jtop.management;
+package com.ajaxjs.jtop.management;
 
-import java.lang.management.ManagementFactory;
+import com.ajaxjs.jtop.rmi.RmiServer;
+import com.ajaxjs.jtop.rmi.interfaces.JClassLoadingInfo;
+import com.ajaxjs.jtop.rmi.interfaces.JGCInfo;
+import com.ajaxjs.jtop.rmi.interfaces.JMemoryInfo;
+import com.ajaxjs.jtop.rmi.interfaces.JThreadInfo;
 
 import javax.management.ObjectName;
 import javax.management.StandardMBean;
-
-import me.hatter.tools.jtop.rmi.RmiServer;
-import me.hatter.tools.jtop.rmi.interfaces.JClassLoadingInfo;
-import me.hatter.tools.jtop.rmi.interfaces.JGCInfo;
-import me.hatter.tools.jtop.rmi.interfaces.JMemoryInfo;
-import me.hatter.tools.jtop.rmi.interfaces.JThreadInfo;
+import java.lang.management.ManagementFactory;
 
 public class JTopImpl extends StandardMBean implements JTopMXBean {
-
-    private static RmiServer  rmiserver  = new RmiServer();
-    private static JTopMXBean jTopMXBean = new JTopImpl();
+    private static final RmiServer rmiserver = new RmiServer();
+    private static final JTopMXBean jTopMXBean = new JTopImpl();
 
     public JTopImpl() {
         super(JTopMXBean.class, true);
@@ -47,5 +45,4 @@ public class JTopImpl extends StandardMBean implements JTopMXBean {
     public JThreadInfo[] listThreadInfos() {
         return rmiserver.listThreadInfos();
     }
-
 }

@@ -1,35 +1,37 @@
-package me.hatter.tools.jtop.rmi.interfaces;
+package com.ajaxjs.jtop.rmi.interfaces;
+
+import lombok.Data;
 
 import java.beans.ConstructorProperties;
 import java.io.Serializable;
 import java.lang.Thread.State;
 import java.lang.management.ThreadInfo;
 
+@Data
 public class JThreadInfo implements Serializable {
+    private static final long serialVersionUID = -8648817024047827694L;
 
-    private static final long   serialVersionUID = -8648817024047827694L;
+    private long cpuTime;
+    private long userTime;
 
-    private long                cpuTime;
-    private long                userTime;
-
-    private String              threadName;
-    private long                threadId;
-    private long                blockedTime;
-    private long                blockedCount;
-    private long                waitedTime;
-    private long                waitedCount;
-    private long                alloctedBytes;
-    private String              lockName;
-    private long                lockOwnerId;
-    private String              lockOwnerName;
-    private boolean             inNative;
-    private boolean             suspended;
-    private Thread.State        threadState;
+    private String threadName;
+    private long threadId;
+    private long blockedTime;
+    private long blockedCount;
+    private long waitedTime;
+    private long waitedCount;
+    private long alloctedBytes;
+    private String lockName;
+    private long lockOwnerId;
+    private String lockOwnerName;
+    private boolean inNative;
+    private boolean suspended;
+    private Thread.State threadState;
     private StackTraceElement[] stackTrace;
 
-    @ConstructorProperties({ "cpuTime", "userTime", "threadName", "threadId", "blockedTime", "blockedCount",
+    @ConstructorProperties({"cpuTime", "userTime", "threadName", "threadId", "blockedTime", "blockedCount",
             "waitedTime", "waitedCount", "alloctedBytes", "lockName", "lockOwnerId", "lockOwnerName", "inNative",
-            "suspended", "threadState", "stackTrace" })
+            "suspended", "threadState", "stackTrace"})
     public JThreadInfo(long cpuTime, long userTime, String threadName, long threadId, long blockedTime,
                        long blockedCount, long waitedTime, long waitedCount, long alloctedBytes, String lockName,
                        long lockOwnerId, String lockOwnerName, boolean inNative, boolean suspended, State threadState,
@@ -106,13 +108,6 @@ public class JThreadInfo implements Serializable {
         this.userTime = userTime;
     }
 
-    public String getThreadName() {
-        return threadName;
-    }
-
-    public void setThreadName(String threadName) {
-        this.threadName = threadName;
-    }
 
     public long getThreadId() {
         return threadId;
@@ -210,11 +205,5 @@ public class JThreadInfo implements Serializable {
         this.threadState = threadState;
     }
 
-    public StackTraceElement[] getStackTrace() {
-        return stackTrace;
-    }
 
-    public void setStackTrace(StackTraceElement[] stackTrace) {
-        this.stackTrace = stackTrace;
-    }
 }

@@ -1,17 +1,21 @@
 # Introduction
 
-_Moved from: https://code.google.com/p/hatter-source-code/wiki/jtop_
 
-This is a Java edition of `top`.
 
-_Java(R) is trace of Oracle(R)_
+https://blog.csdn.net/iamzhongyong/article/details/9297421
+https://github.com/yujikiriki/jtop/tree/develop
+https://github.com/andrewglowacki/jtop
+
+https://blog.csdn.net/iamzhongyong/article/details/9297557
+https://www.iteye.com/blog/iamzhongyong-1742829
 
 # Usage
 
 Get jtop:
-Get `jtop.jar` from [https://bitbucket.org/hatterjiang/jtop/src](https://bitbucket.org/hatterjiang/jtop/src).
+Get `jtop.jar` from 
 
 Usage:
+
 ```
 $ java -jar jtop.jar 
 [ERROR] pid is not assigned.
@@ -31,11 +35,13 @@ java -cp jtop.jar jtop [options] <pid> [<interval> [<count>]]
 ```
 
 Use this command to view the eclipse's top:
+
 ```
 $ java -jar jtop.jar -size h -thread 3 -stack 4 387
 ```
 
 You would see:
+
 ```
 NEW ROUND ================================================== 
 Heap Memory: INIT=40.00M  USED=145.16M  COMMITED=278.57M  MAX=379.88M
@@ -64,12 +70,12 @@ Poller SunPKCS11-Darwin  TID=11  STATE=TIMED_WAITING  CPU_TIME=0 (0.01%)  USER_T
 ```
 
 Output like 'top' use arguemnt --A or --advanced:
+
 ```
 $ java -jar jtop.jar --A --C 387
 -OR-
 $ java -jar jtop.jar ---AC 387
 ```
-
 
 ![jtop.png](https://bitbucket.org/repo/E9aogx/images/19642114-jtop.png)
 

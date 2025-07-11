@@ -1,4 +1,4 @@
-package me.hatter.tools.jtop.rmi.exception;
+package com.ajaxjs.jtop.rmi;
 
 public class ServiceNotStartedException extends RuntimeException {
 

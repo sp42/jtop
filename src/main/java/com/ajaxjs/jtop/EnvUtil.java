@@ -1,24 +1,23 @@
-package me.hatter.tools.jtop.util;
+package com.ajaxjs.jtop;
 
 import me.hatter.tools.commons.args.UnixArgsutil;
 
 public class EnvUtil {
-
     public static String getPid() {
         return UnixArgsutil.ARGS.args()[0];
     }
 
     public static long getSleepMillis() {
-        if (UnixArgsutil.ARGS.args().length > 1) {
+        if (UnixArgsutil.ARGS.args().length > 1)
             return Long.parseLong(UnixArgsutil.ARGS.args()[1]);
-        }
+
         return 2000L;
     }
 
     public static int getDumpCount() {
-        if (UnixArgsutil.ARGS.args().length > 2) {
+        if (UnixArgsutil.ARGS.args().length > 2)
             return Integer.parseInt(UnixArgsutil.ARGS.args()[2]);
-        }
+
         return 1;
     }
 
@@ -48,16 +47,19 @@ public class EnvUtil {
 
     public static String getStr(String key, String def) {
         String val = UnixArgsutil.ARGS.kvalue(key);
+
         return (val == null) ? def : val;
     }
 
     public static long getLong(String key, long def) {
         String val = UnixArgsutil.ARGS.kvalue(key);
+
         return (val == null) ? def : Long.parseLong(val);
     }
 
     public static int getInt(String key, int def) {
         String val = UnixArgsutil.ARGS.kvalue(key);
+
         return (val == null) ? def : Integer.parseInt(val);
     }
 }
