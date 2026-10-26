@@ -51,16 +51,11 @@ public class BatchOutputScreenPrinter implements Printer {
     }
 
     @Override
-    public void println(Text text) {
-        screenPrinter.println(text);
-    }
-
-    @Override
     public void finish() {
         screenPrinter.finish();
         String output;
         try {
-            output = new String(baos.toByteArray(), UTF8);
+            output = baos.toString(UTF8);
         } catch (UnsupportedEncodingException e) {
             throw new RuntimeException(e);
         }

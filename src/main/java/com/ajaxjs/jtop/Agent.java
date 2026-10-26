@@ -7,7 +7,6 @@ import java.lang.instrument.Instrumentation;
 
 @SuppressWarnings("restriction")
 public class Agent {
-
     public static final String AGENT_INIT_KEY = "me.hatter.tools.jtop.init.key";
 
     private static Instrumentation instrumentation;
@@ -20,7 +19,7 @@ public class Agent {
         domain(agentArgs, inst);
     }
 
-    public static void domain(String agentArgs, Instrumentation inst) throws Exception {
+    public static void domain(String agentArgs, Instrumentation inst) {
         if (instrumentation == null)
             instrumentation = inst;
 

@@ -4,7 +4,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 public class JDKUtil {
-    public static enum JDKVersion {
+    public enum JDKVersion {
         JDK1_0, JDK1_1, JDK1_2, JDK1_3, JDK1_4,
 
         JDK1_5, JDK1_6, JDK1_7, JDK1_8, Unknown
@@ -28,6 +28,7 @@ public class JDKUtil {
 
     public static boolean isOrAbove(JDKVersion version) {
         Integer internalIndex = jdkVersionMap.get(version);
+
         if (internalIndex == null)
             return false;
 

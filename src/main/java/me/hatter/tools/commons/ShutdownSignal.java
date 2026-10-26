@@ -1,9 +1,8 @@
-package me.hatter.tools.commons.misc;
+package me.hatter.tools.commons;
 
 import java.util.concurrent.Semaphore;
 
 public class ShutdownSignal {
-
     // must be fair, otherwise may cannot shut down
     private final Semaphore semaphore = new Semaphore(1, true);
 
@@ -23,7 +22,7 @@ public class ShutdownSignal {
                     // when Ctrl+C, wait normal process finished
                     semaphore.acquire();
                     semaphore.release();
-                } catch (InterruptedException e) {
+                } catch (InterruptedException ignored) {
                 }
             }
         });

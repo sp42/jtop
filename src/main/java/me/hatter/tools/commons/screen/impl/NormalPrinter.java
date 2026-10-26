@@ -42,11 +42,6 @@ public class NormalPrinter implements Printer {
     }
 
     @Override
-    public void println(Text text) {
-        out.println(text.toString());
-    }
-
-    @Override
     public void finish() {
         out.flush();
     }

@@ -4,10 +4,12 @@ import javax.management.remote.JMXConnector;
 import java.io.IOException;
 
 public class RemoteManagementTool {
+    private String pid;
 
-    private String pid = null;
-    private HotSpotJMXConnectTool connectTool = null;
+    private final HotSpotJMXConnectTool connectTool;
+
     private JMXConnector jmxConnector = null;
+
     private RemoteManagementFactory factory = null;
 
     public RemoteManagementTool(String pid) {
@@ -23,6 +25,7 @@ public class RemoteManagementTool {
                 throw new RuntimeException(e);
             }
         }
+
         return factory;
     }
 
@@ -36,6 +39,7 @@ public class RemoteManagementTool {
                 }
             });
         }
+
         return jmxConnector;
     }
 
@@ -46,6 +50,7 @@ public class RemoteManagementTool {
             } catch (IOException e) {
                 throw new RuntimeException(e);
             }
+
             jmxConnector = null;
         }
     }

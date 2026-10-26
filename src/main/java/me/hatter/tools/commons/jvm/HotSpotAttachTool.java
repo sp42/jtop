@@ -1,17 +1,17 @@
 package me.hatter.tools.commons.jvm;
 
-import com.sun.tools.attach.VirtualMachine;
 import com.ajaxjs.jtop.util.ExceptionUtil;
-import me.hatter.tools.commons.object.LogUtil;
+import com.sun.tools.attach.VirtualMachine;
+import me.hatter.tools.commons.LogUtil;
 
 import java.io.IOException;
 import java.util.concurrent.atomic.AtomicReference;
 
 @SuppressWarnings("restriction")
 public class HotSpotAttachTool {
+    private final String pid;
 
-    private String pid;
-    private final AtomicReference<VirtualMachine> refVM = new AtomicReference<VirtualMachine>(null);
+    private final AtomicReference<VirtualMachine> refVM = new AtomicReference<>(null);
 
     public HotSpotAttachTool(String pid) {
         this.pid = pid;

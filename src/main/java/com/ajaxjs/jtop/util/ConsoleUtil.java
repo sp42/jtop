@@ -7,7 +7,7 @@ public class ConsoleUtil {
         do {
             System.out.print(prompt);
             line = System.console().readLine();
-        } while (line.trim().length() == 0);
+        } while (line.trim().isEmpty());
 
         return line;
     }

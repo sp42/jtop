@@ -1,7 +1,6 @@
 package me.hatter.tools.commons.color;
 
 public class Position {
-
     private int row;
     private int col;
 

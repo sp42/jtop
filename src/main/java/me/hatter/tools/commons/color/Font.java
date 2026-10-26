@@ -1,24 +1,14 @@
 package me.hatter.tools.commons.color;
 
 import me.hatter.tools.commons.screen.TermUtils;
-import me.hatter.tools.commons.object.StringUtil;
 
 import java.util.LinkedHashSet;
 import java.util.Set;
 
 public class Font {
-
     private Position position;
     private Color color;
     private boolean isBold;
-
-    public Font(Color color) {
-        this(null, color, false);
-    }
-
-    public Font(Position position, Color color) {
-        this(position, color, false);
-    }
 
     public Font(Position position, Color color, boolean isBold) {
         this.position = position;
@@ -43,26 +33,49 @@ public class Font {
     }
 
     public String display(String text) {
-        StringBuffer sb = new StringBuffer();
+        StringBuilder sb = new StringBuilder();
         boolean needEndFlag = false;
+
         if (position != null) {
             needEndFlag = true;
-            sb.append(TermUtils.CHAR_27 + "[" + position.getRow() + "H");
-            sb.append(TermUtils.CHAR_27 + "[" + position.getCol() + "C");
+            sb.append(TermUtils.CHAR_27 + "[").append(position.getRow()).append("H");
+            sb.append(TermUtils.CHAR_27 + "[").append(position.getCol()).append("C");
         }
-        if ((color != null) && (color.getValues() != null) && (color.getValues().size() > 0)) {
+
+        if ((color != null) && (color.getValues() != null) && (!color.getValues().isEmpty())) {
             needEndFlag = true;
-            Set<Integer> l = new LinkedHashSet<Integer>();
-            if (isBold) {
+            Set<Integer> l = new LinkedHashSet<>();
+
+            if (isBold)
                 l.add(1);
-            }
+
             l.addAll(color.getValues());
-            sb.append(TermUtils.CHAR_27 + "[" + StringUtil.join(l.toArray(), ";") + "m");
+            sb.append(TermUtils.CHAR_27 + "[").append(join(l.toArray(), ";")).append("m");
         }
+
         sb.append(text);
-        if (needEndFlag) {
+
+        if (needEndFlag)
             sb.append(TermUtils.RESET);
-        }
+
+        return sb.toString();
+    }
+
+    public static final String EMPTY = "";
+
+    public static String join(Object[] objects, String separator) {
+        if (objects == null)
+            return null;
+
+        if (objects.length == 0)
+            return EMPTY;
+
+        StringBuilder sb = new StringBuilder();
+        sb.append(objects[0]);
+
+        for (int i = 1; i < objects.length; i++)
+            sb.append(separator).append(objects[i]);
+
         return sb.toString();
     }
 }

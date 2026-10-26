@@ -1,12 +1,9 @@
-package me.hatter.tools.commons.object;
-
-import com.ajaxjs.jtop.util.ExceptionUtil;
+package me.hatter.tools.commons;
 
 import java.util.*;
 
 public class LogUtil {
-    public static enum LogType {
-
+    public enum LogType {
         TRACE,
 
         DEBUG,
@@ -18,28 +15,30 @@ public class LogUtil {
         ERROR
     }
 
-    private static Set<LogType> LOG_TYPE_SET = new HashSet<LogUtil.LogType>();
+    private static Set<LogType> LOG_TYPE_SET = new HashSet<>();
 
     static {
         String logTypes = System.getProperty("log.types");
-        List<LogType> logTypeList = new ArrayList<LogType>();
+        List<LogType> logTypeList = new ArrayList<>();
+
         if (logTypes != null) {
             String[] logTypesArray = logTypes.split("[,;]");
+
             for (String lt : logTypesArray) {
                 for (LogType lte : LogType.values()) {
-                    if (lte.name().equalsIgnoreCase(lt.trim())) {
+                    if (lte.name().equalsIgnoreCase(lt.trim()))
                         logTypeList.add(lte);
-                    }
                 }
             }
         }
-        setLogTypeSet(logTypeList.isEmpty() ? Arrays.asList(LogType.values()) : logTypeList,
-                (logTypes != null));
+
+        setLogTypeSet(logTypeList.isEmpty() ? Arrays.asList(LogType.values()) : logTypeList, logTypes != null);
     }
 
     synchronized public static void setLogTypeSet(Collection<LogType> logTypeSet, boolean printSetInfo) {
         Set<LogType> logTypes = new HashSet<>();
         logTypes.add(LogType.ERROR);
+
         if (logTypeSet != null)
             logTypes.addAll(logTypeSet);
 
@@ -49,44 +48,12 @@ public class LogUtil {
         LOG_TYPE_SET = logTypes;
     }
 
-    synchronized public static boolean isTraceEnable() {
-        return LOG_TYPE_SET.contains(LogType.TRACE);
-    }
-
-    synchronized public static boolean isDebugEnable() {
-        return LOG_TYPE_SET.contains(LogType.DEBUG);
-    }
-
-    synchronized public static boolean isInfoEnable() {
-        return LOG_TYPE_SET.contains(LogType.INFO);
-    }
-
-    synchronized public static boolean isWarnEnable() {
-        return LOG_TYPE_SET.contains(LogType.WARN);
-    }
-
-    synchronized public static void trace(String message) {
-        message(LogType.TRACE, message);
-    }
-
-    synchronized public static void debug(String message) {
-        message(LogType.DEBUG, message);
-    }
-
     synchronized public static void info(String message) {
         message(LogType.INFO, message);
     }
 
-    synchronized public static void warn(String message) {
-        message(LogType.WARN, message);
-    }
-
     synchronized public static void error(String message) {
         message(LogType.ERROR, message);
-    }
-
-    synchronized public static void error(String message, Throwable t) {
-        message(LogType.ERROR, message + ", exception: " + ExceptionUtil.printStackTrace(t));
     }
 
     synchronized public static void message(LogType type, String message) {
@@ -94,6 +61,7 @@ public class LogUtil {
             if (!LOG_TYPE_SET.contains(type))
                 return;
         }
+
         StringBuilder msg = new StringBuilder((message == null) ? 16 : (message.length() + 10));
 
         if (type != null) {
@@ -101,7 +69,8 @@ public class LogUtil {
             msg.append(type.name());
             msg.append("] ");
         }
+
         msg.append(message);
-        System.out.println(msg.toString());
+        System.out.println(msg);
     }
 }

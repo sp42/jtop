@@ -14,7 +14,5 @@ public interface Printer {
 
     void println(String str);
 
-    void println(Text text);
-
     void finish();
 }

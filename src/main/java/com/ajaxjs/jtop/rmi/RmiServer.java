@@ -1,7 +1,7 @@
 package com.ajaxjs.jtop.rmi;
 
 import com.ajaxjs.jtop.rmi.interfaces.*;
-import me.hatter.tools.commons.object.ReflectUtil;
+import me.hatter.tools.commons.CommonUtil;
 
 import java.lang.management.*;
 import java.util.ArrayList;
@@ -17,12 +17,12 @@ public class RmiServer {
 
     public JMemoryInfo getMemoryInfo() {
         MemoryMXBean memoryMXBean = ManagementFactory.getMemoryMXBean();
-        return new JMemoryInfo(new JMemoryUsage(memoryMXBean.getHeapMemoryUsage()),
-                new JMemoryUsage(memoryMXBean.getNonHeapMemoryUsage()));
+
+        return new JMemoryInfo(new JMemoryUsage(memoryMXBean.getHeapMemoryUsage()), new JMemoryUsage(memoryMXBean.getNonHeapMemoryUsage()));
     }
 
     public JGCInfo[] getGCInfos() {
-        List<JGCInfo> jgcInfos = new ArrayList<JGCInfo>();
+        List<JGCInfo> jgcInfos = new ArrayList<>();
         List<GarbageCollectorMXBean> garbageCollectorMXBeans = ManagementFactory.getGarbageCollectorMXBeans();
 
         for (GarbageCollectorMXBean garbageCollectorMXBean : garbageCollectorMXBeans) {
@@ -63,7 +63,7 @@ public class RmiServer {
 
             long alloctedBytes = 0L;
             // only in sun/oracle JDK, OpenJDK cannot find "class com.sun.management.ThreadMXBean"
-            if (ReflectUtil.isClassPresent("com.sun.management.ThreadMXBean")) {
+            if (CommonUtil.isClassPresent("com.sun.management.ThreadMXBean")) {
                 com.sun.management.ThreadMXBean sunThreadMxBean = (com.sun.management.ThreadMXBean) ManagementFactory.getThreadMXBean();
                 if (sunThreadMxBean.isThreadAllocatedMemorySupported()
                         && sunThreadMxBean.isThreadAllocatedMemoryEnabled()) {

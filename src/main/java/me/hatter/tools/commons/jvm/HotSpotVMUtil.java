@@ -1,11 +1,11 @@
 package me.hatter.tools.commons.jvm;
 
 import com.ajaxjs.jtop.util.ClassLoaderUtil;
-import me.hatter.tools.commons.environment.Environment;
-import me.hatter.tools.commons.environment.Environment.JavaVendor;
-import me.hatter.tools.commons.object.LogUtil;
-import me.hatter.tools.commons.object.OSUtil;
-import me.hatter.tools.commons.object.OSUtil.OS;
+import me.hatter.tools.commons.Environment;
+import me.hatter.tools.commons.Environment.JavaVendor;
+import me.hatter.tools.commons.LogUtil;
+import me.hatter.tools.commons.OSUtil;
+import me.hatter.tools.commons.OSUtil.OS;
 
 import java.io.File;
 import java.net.MalformedURLException;

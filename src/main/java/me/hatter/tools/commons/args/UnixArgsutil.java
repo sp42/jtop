@@ -6,12 +6,11 @@ public class UnixArgsutil {
     public static final UnixArgs ARGS = new UnixArgs();
 
     public static class UnixArgs {
-        private KList args = new KList();
-        private KSet flags = new KSet();
-        private KMap keyvalues = new KMap();
+        private final KList args = new KList();
+        private final KSet flags = new KSet();
+        private final KMap keyvalues = new KMap();
 
         private String[] _args = null;
-        private KSet _keys = null;
 
         public String[] args() {
             synchronized (this) {
@@ -26,22 +25,9 @@ public class UnixArgsutil {
             return flags;
         }
 
-        public KSet keys() {
-            synchronized (this) {
-                if (_keys == null)
-                    _keys = new KSet(keyvalues.keySet());
-            }
-            return _keys;
-        }
-
         public String kvalue(String key) {
             List<String> vs = keyvalues.get(key);
-            return ((vs == null) || (vs.size() == 0)) ? null : vs.get(0);
-        }
-
-        public String kvalue(String key, String defval) {
-            List<String> vs = keyvalues.get(key);
-            return ((vs == null) || (vs.size() == 0)) ? defval : vs.get(0);
+            return ((vs == null) || vs.isEmpty()) ? null : vs.get(0);
         }
 
         public List<String> kvalues(String key) {
@@ -49,10 +35,6 @@ public class UnixArgsutil {
             return (vs == null) ? null : Collections.unmodifiableList(vs);
         }
 
-        public List<String> kvalues(String key, List<String> defval) {
-            List<String> vs = keyvalues.get(key);
-            return (vs == null) ? defval : Collections.unmodifiableList(vs);
-        }
     }
 
     public static class KList extends ArrayList<String> {
@@ -67,52 +49,27 @@ public class UnixArgsutil {
         public KSet() {
         }
 
-        public KSet(Collection<? extends String> c) {
-            super(c);
-        }
-
         public boolean containsAny(String key, String... keys) {
-            if (this.contains(key)) {
+            if (this.contains(key))
                 return true;
-            }
+
             if (keys != null) {
-                for (int i = 0; i < keys.length; i++) {
-                    if (this.contains(keys[i])) {
+                for (String s : keys) {
+                    if (this.contains(s))
                         return true;
-                    }
                 }
             }
+
             return false;
         }
     }
 
     public static class KMap extends LinkedHashMap<String, List<String>> {
-
         private static final long serialVersionUID = -156830291036307953L;
-    }
-
-    public static PICArgs parseGlobalPICArgs(String[] args, long defInterval, int defcount) {
-        parseGlobalArgs(args);
-        PICArgs picArgs = new PICArgs(defInterval, defcount);
-        picArgs.parseArgs(UnixArgsutil.ARGS.args());
-        return picArgs;
-    }
-
-    public static PICArgs parseGlobalPICArgs(String[] args) {
-        parseGlobalArgs(args);
-        PICArgs picArgs = new PICArgs();
-        picArgs.parseArgs(UnixArgsutil.ARGS.args());
-        return picArgs;
     }
 
     public static void parseGlobalArgs(String[] args) {
         processArgs(ARGS, args);
-    }
-
-    public static UnixArgs parseArgs(String[] args) {
-        UnixArgs unixArgs = new UnixArgs();
-        processArgs(unixArgs, args);
-        return unixArgs;
     }
 
     public static void processArgs(UnixArgs unixArgs, String[] args) {
@@ -121,11 +78,7 @@ public class UnixArgsutil {
 
             for (String arg : args) {
                 if (lastk != null) {
-                    List<String> vs = unixArgs.keyvalues.get(lastk);
-                    if (vs == null) {
-                        vs = new ArrayList<>();
-                        unixArgs.keyvalues.put(lastk, vs);
-                    }
+                    List<String> vs = unixArgs.keyvalues.computeIfAbsent(lastk, k -> new ArrayList<>());
 
                     vs.add(arg);
                     lastk = null;
@@ -143,19 +96,14 @@ public class UnixArgsutil {
                             String k = ar.substring(0, indexOfEq);
                             String v = ar.substring(indexOfEq + 1);
 
-                            List<String> vs = unixArgs.keyvalues.get(k);
-                            if (vs == null) {
-                                vs = new ArrayList<>();
-                                unixArgs.keyvalues.put(k, vs);
-                            }
+                            List<String> vs = unixArgs.keyvalues.computeIfAbsent(k, k1 -> new ArrayList<>());
 
                             vs.add(v);
                         } else
                             unixArgs.flags.add(ar);
-
                     } else if (arg.startsWith("-"))
                         lastk = arg.substring(1);
-                     else
+                    else
                         unixArgs.args.add(arg);
                 }
             }

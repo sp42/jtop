@@ -4,8 +4,7 @@ import java.util.Arrays;
 import java.util.List;
 
 public class Color {
-
-    private List<Integer> values;
+    private final List<Integer> values;
 
     public Color(Integer... value) {
         this.values = Arrays.asList(value);

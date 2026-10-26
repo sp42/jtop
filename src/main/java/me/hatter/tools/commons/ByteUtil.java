@@ -1,13 +1,11 @@
-package me.hatter.tools.commons.bytes;
-
-import me.hatter.tools.commons.object.StringUtil;
+package me.hatter.tools.commons;
 
 import java.text.DecimalFormat;
 
 public class ByteUtil {
     public static final long N1024 = 1024L;
 
-    public static enum ByteFormat {
+    public enum ByteFormat {
         BYTE(1L, null),
 
         KB(N1024, "K"),
@@ -30,9 +28,9 @@ public class ByteUtil {
         }
 
         public static ByteFormat fromString(String str) {
-            if ((str == null) || (str.length() == 0)) {
+            if ((str == null) || (str.isEmpty()))
                 return null;
-            }
+
             char c = str.toLowerCase().charAt(0);
             switch (c) {
                 case 'h':
@@ -57,12 +55,13 @@ public class ByteUtil {
     }
 
     public static String formatBytes(ByteFormat format, long size) {
-        if (format == null) {
+        if (format == null)
             return String.valueOf(size);
-        }
+
         boolean isMinus = (size < 0);
         size = Math.abs(size);
         DecimalFormat nf = new DecimalFormat("0.00");
+
         if (format == ByteFormat.HUMAN) {
             if (size > ByteFormat.GB.getSize()) {
                 format = ByteFormat.GB;
@@ -74,7 +73,9 @@ public class ByteUtil {
                 format = ByteFormat.BYTE;
             }
         }
-        String prefix = isMinus ? "-" : StringUtil.EMPTY;
+
+        String prefix = isMinus ? "-" : "";
+
         switch (format) {
             case KB:
                 return prefix + nf.format(((double) size) / ByteFormat.KB.getSize()) + ByteFormat.KB.getSuffix();
@@ -83,7 +84,7 @@ public class ByteUtil {
             case GB:
                 return prefix + nf.format(((double) size) / ByteFormat.GB.getSize()) + ByteFormat.GB.getSuffix();
             default:
-                return prefix + String.valueOf(size);
+                return prefix + size;
         }
     }
 }

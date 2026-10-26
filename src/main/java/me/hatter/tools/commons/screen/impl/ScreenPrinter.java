@@ -5,7 +5,6 @@ import me.hatter.tools.commons.color.Position;
 import me.hatter.tools.commons.color.Text;
 import me.hatter.tools.commons.screen.Printer;
 import me.hatter.tools.commons.screen.TermUtils;
-import me.hatter.tools.commons.object.StringUtil;
 
 import java.io.PrintStream;
 import java.util.ArrayList;
@@ -21,10 +20,6 @@ public class ScreenPrinter implements Printer {
     private int chars = 0;
     private int lines = 1;
 
-    public ScreenPrinter(int width, int height) {
-        this(System.out, width, height);
-    }
-
     public ScreenPrinter(PrintStream out, int width, int height) {
         this.out = out;
         this.width = width;
@@ -36,7 +31,7 @@ public class ScreenPrinter implements Printer {
         // clean screen and move to POS:1,1
         out.println();
         out.print(TermUtils.CLEAR);
-        out.print(Font.createFont(Position.getPosition(1, 1), null).display(StringUtil.EMPTY));
+        out.print(Font.createFont(Position.getPosition(1, 1), null).display(""));
         out.print(TermUtils.MOVE_LEFT1);
     }
 
@@ -52,17 +47,12 @@ public class ScreenPrinter implements Printer {
 
     @Override
     public void println() {
-        printStrOrText(StringUtil.EMPTY, null, true);
+        printStrOrText("", null, true);
     }
 
     @Override
     public void println(String str) {
         printStrOrText(str, null, true);
-    }
-
-    @Override
-    public void println(Text text) {
-        printStrOrText(null, text, true);
     }
 
     private List<String> split(String str) {

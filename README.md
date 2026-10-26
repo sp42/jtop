@@ -10,12 +10,12 @@ https://blog.csdn.net/iamzhongyong/article/details/9297557
 在网上找了些资料，发现之前有人写了个jtop的工具，能够全面获取java应用的信息.
 原理是使用了java中的MBean，借这个机会，把MBean的东西简单了解一下
 
-查看占用CPU前三的线程栈信息（sudo -u admin java -cp jtop.jar jtop -thread 3 -stack 50 --summaryoff  PID）
+查看占用CPU前三的线程栈信息（sudo -u admin java -cp jtop.jar jtop -thread 3 -stack 50 --summaryoff PID）
 
 Get jtop:
 Get `jtop.jar` from
 
-Usage:
+Usage:yiyi
 
 ```
 $ java -jar jtop.jar 

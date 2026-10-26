@@ -1,10 +1,8 @@
 package com.ajaxjs.jtop.util;
 
-import me.hatter.tools.commons.io.IOUtil;
-import me.hatter.tools.commons.object.LogUtil;
+import me.hatter.tools.commons.LogUtil;
 
-import java.io.File;
-import java.io.FileOutputStream;
+import java.io.*;
 import java.lang.reflect.Field;
 import java.lang.reflect.Method;
 import java.net.URL;
@@ -113,7 +111,7 @@ public class ClassLoaderUtil {
 
     @SuppressWarnings("unchecked")
     public static <T> T loadClassAndNew(ClassLoader classLoader, String clazz) {
-        return newInstance((Class<T>) loadClassAndNew(classLoader, clazz));
+        return newInstance(loadClassAndNew(classLoader, clazz));
     }
 
     @SuppressWarnings("unchecked")
@@ -135,6 +133,7 @@ public class ClassLoaderUtil {
 
     public static String findClassJarPath(Object classOrName) {
         String className;
+
         if (classOrName instanceof String) {
             className = (String) classOrName;
         } else if (classOrName instanceof Class) {
@@ -142,7 +141,9 @@ public class ClassLoaderUtil {
         } else {
             throw new RuntimeException("Argument classOrName must be String or Class.");
         }
+
         URL u = getClassLoaderByClass(ClassLoaderUtil.class).getResource(className.replace('.', '/') + ".class");
+
         if (u != null) {
             String f = u.getFile();
             f = f.substring(0, f.indexOf(".jar!/") + 4);
@@ -151,6 +152,7 @@ public class ClassLoaderUtil {
             }
             return f;
         }
+
         return null;
     }
 
@@ -160,12 +162,30 @@ public class ClassLoaderUtil {
             File tempjline = File.createTempFile("temp-jar", ".jar");
             tempjline.deleteOnExit();
             FileOutputStream fos = new FileOutputStream(tempjline);
-            IOUtil.copy(ClassLoaderUtil.class.getResourceAsStream(r), fos);
+            copy(ClassLoaderUtil.class.getResourceAsStream(r), fos);
             fos.close();
             LogUtil.info("Generate jar and add to system class loader: " + tempjline + " (from " + r + ")");
             ClassLoaderUtil.addURLs(ClassLoaderUtil.getSystemClassLoader(), tempjline.toURI().toURL());
         } catch (Exception e) {
             throw new RuntimeException(e);
         }
+    }
+
+    public static final int KB = 1024;
+    public static final int MB = KB * KB;
+    public static final int GB = MB * KB;
+    public static final int TB = GB * KB;
+    public static final String CHARSET_UTF8 = "UTF-8";
+
+    public static long copy(InputStream is, OutputStream os) throws IOException {
+        long total = 0;
+        byte[] b = new byte[8 * KB];
+
+        for (int len; ((len = is.read(b)) != -1); ) {
+            os.write(b, 0, len);
+            total += len;
+        }
+
+        return total;
     }
 }

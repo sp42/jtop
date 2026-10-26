@@ -1,10 +1,12 @@
 package com.ajaxjs.jtop.util;
 
+import lombok.Getter;
+
 import java.net.InetAddress;
 import java.net.UnknownHostException;
 
 public class LocalHostUtil {
-
+    @Getter
     private static String localIp;
 
     static {
@@ -14,9 +16,5 @@ public class LocalHostUtil {
         } catch (UnknownHostException e) {
             localIp = "unknow";
         }
-    }
-
-    public static String getLocalIp() {
-        return localIp;
     }
 }

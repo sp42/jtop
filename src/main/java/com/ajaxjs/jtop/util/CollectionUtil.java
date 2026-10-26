@@ -15,14 +15,12 @@ public class CollectionUtil {
     }
 
     public class NotNullFilter<T> implements Filter<T> {
-
         public boolean accept(T object) {
             return (object != null);
         }
     }
 
     public static class StringToUpperCase implements Transformer<String, String> {
-
         @Override
         public String transform(String object) {
             return (object == null) ? null : object.toUpperCase();
@@ -30,7 +28,6 @@ public class CollectionUtil {
     }
 
     public static class StringToLowerCase implements Transformer<String, String> {
-
         @Override
         public String transform(String object) {
             return (object == null) ? null : object.toLowerCase();
@@ -72,28 +69,30 @@ public class CollectionUtil {
     }
 
     public static <T> List<T> filter(Collection<T> list, Filter<T> filter) {
-        List<T> result = new ArrayList<T>();
+        List<T> result = new ArrayList<>();
+
         if (list != null) {
             for (T o : list) {
-                if (filter == null) {
+                if (filter == null)
                     result.add(o);
-                } else {
-                    if (filter.accept(o)) {
+                else {
+                    if (filter.accept(o))
                         result.add(o);
-                    }
                 }
             }
         }
+
         return result;
     }
 
     public static <T, D> List<D> transform(Collection<T> list, Transformer<T, D> transformer) {
-        List<D> result = new ArrayList<D>();
+        List<D> result = new ArrayList<>();
+
         if (list != null) {
-            for (T o : list) {
+            for (T o : list)
                 result.add(transformer.transform(o));
-            }
         }
+
         return result;
     }
 
@@ -103,6 +102,6 @@ public class CollectionUtil {
 
     @SuppressWarnings("unchecked")
     public static <T> List<T> objectToList(T object) {
-        return new ArrayList<T>(Arrays.asList(object));
+        return new ArrayList<>(Collections.singletonList(object));
     }
 }

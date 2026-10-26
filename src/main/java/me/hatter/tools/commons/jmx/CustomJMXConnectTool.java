@@ -7,10 +7,12 @@ import java.util.HashSet;
 import java.util.Set;
 
 public class CustomJMXConnectTool {
+    private final String pid;
 
-    private String pid;
-    private String agentInitKey;
-    private String agentJarFile;
+    private final String agentInitKey;
+
+    private final String agentJarFile;
+
     private RemoteManagementTool tool;
 
     private static final Set<String> agentInitKeySet = new HashSet<String>();
@@ -26,9 +28,9 @@ public class CustomJMXConnectTool {
     }
 
     synchronized RemoteManagementFactory getRemoteManagementFactory() {
-        if (tool == null) {
+        if (tool == null)
             tool = new RemoteManagementTool(pid);
-        }
+
         return tool.getManagementFactory();
     }
 
@@ -37,17 +39,19 @@ public class CustomJMXConnectTool {
         if (!agentInitKeySet.contains(agentInitKey)) {
             HotSpotAttachTool attach = new HotSpotAttachTool(pid);
             attach.attach();
+
             try {
-                if (attach.getVM().getAgentProperties().get(agentInitKey) == null) {
+                if (attach.getVM().getAgentProperties().get(agentInitKey) == null)
                     attach.getVM().loadAgent(agentJarFile);
-                }
             } catch (Exception e) {
                 throw new RuntimeException(e);
             } finally {
                 attach.detach();
             }
+
             agentInitKeySet.add(agentInitKey);
         }
+
         return getRemoteManagementFactory().newPlatformMXBeanProxy(objectName, clazzMXBean);
     }
 }
