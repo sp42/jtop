@@ -8,21 +8,24 @@ import java.io.PrintStream;
 import java.io.UnsupportedEncodingException;
 
 public class BatchOutputScreenPrinter implements Printer {
-
     private static final String UTF8 = "UTF-8";
 
-    private ByteArrayOutputStream baos;
-    private PrintStream out;
-    private ScreenPrinter screenPrinter;
+    private final ByteArrayOutputStream baos;
+
+    private final PrintStream out;
+
+    private final ScreenPrinter screenPrinter;
 
     public BatchOutputScreenPrinter(int width, int height) {
-        this.baos = new ByteArrayOutputStream();
+        baos = new ByteArrayOutputStream();
+
         try {
-            this.out = new PrintStream(baos, false, UTF8);
+            out = new PrintStream(baos, false, UTF8);
         } catch (UnsupportedEncodingException e) {
             throw new RuntimeException(e);
         }
-        this.screenPrinter = new ScreenPrinter(out, width, height);
+
+        screenPrinter = new ScreenPrinter(out, width, height);
     }
 
     @Override
@@ -54,11 +57,13 @@ public class BatchOutputScreenPrinter implements Printer {
     public void finish() {
         screenPrinter.finish();
         String output;
+
         try {
             output = baos.toString(UTF8);
         } catch (UnsupportedEncodingException e) {
             throw new RuntimeException(e);
         }
+
         System.out.print(output);
         System.out.flush();
     }

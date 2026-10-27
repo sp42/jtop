@@ -4,13 +4,15 @@ package com.ajaxjs.jtop.objects;
 import com.ajaxjs.jtop.rmi.interfaces.JClassLoadingInfo;
 import com.ajaxjs.jtop.rmi.interfaces.JMemoryInfo;
 import lombok.Data;
+import lombok.RequiredArgsConstructor;
 
 import java.util.HashMap;
 import java.util.Map;
 
 @Data
+@RequiredArgsConstructor
 public class MainOutput {
-    private int round;
+    private final int round;
 
     private int totalThreadCount;
 
@@ -23,8 +25,4 @@ public class MainOutput {
     private JClassLoadingInfo jClassLoadingInfo;
 
     private Map<Long, ThreadOutput> threadMap = new HashMap<>();
-
-    public MainOutput(int round) {
-        this.round = round;
-    }
 }

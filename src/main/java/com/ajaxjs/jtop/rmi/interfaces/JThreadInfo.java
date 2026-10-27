@@ -83,127 +83,12 @@ public class JThreadInfo implements Serializable {
         this.lockName = jThreadInfo.getLockName();
         this.lockOwnerId = jThreadInfo.getLockOwnerId();
         this.lockOwnerName = jThreadInfo.getLockOwnerName();
-        this.inNative = jThreadInfo.getInNative();
-        this.suspended = jThreadInfo.getSuspended();
+        this.inNative = jThreadInfo.isInNative();
+        this.suspended = jThreadInfo.isSuspended();
         this.threadState = jThreadInfo.getThreadState();
         this.stackTrace = jThreadInfo.getStackTrace();
         this.cpuTime = cpuTime;
         this.userTime = userTime;
         this.alloctedBytes = alloctedBytes;
     }
-
-    public long getCpuTime() {
-        return cpuTime;
-    }
-
-    public void setCpuTime(long cpuTime) {
-        this.cpuTime = cpuTime;
-    }
-
-    public long getUserTime() {
-        return userTime;
-    }
-
-    public void setUserTime(long userTime) {
-        this.userTime = userTime;
-    }
-
-
-    public long getThreadId() {
-        return threadId;
-    }
-
-    public void setThreadId(long threadId) {
-        this.threadId = threadId;
-    }
-
-    public long getBlockedTime() {
-        return blockedTime;
-    }
-
-    public void setBlockedTime(long blockedTime) {
-        this.blockedTime = blockedTime;
-    }
-
-    public long getBlockedCount() {
-        return blockedCount;
-    }
-
-    public void setBlockedCount(long blockedCount) {
-        this.blockedCount = blockedCount;
-    }
-
-    public long getWaitedTime() {
-        return waitedTime;
-    }
-
-    public void setWaitedTime(long waitedTime) {
-        this.waitedTime = waitedTime;
-    }
-
-    public long getWaitedCount() {
-        return waitedCount;
-    }
-
-    public void setWaitedCount(long waitedCount) {
-        this.waitedCount = waitedCount;
-    }
-
-    public long getAlloctedBytes() {
-        return alloctedBytes;
-    }
-
-    public void setAlloctedBytes(long alloctedBytes) {
-        this.alloctedBytes = alloctedBytes;
-    }
-
-    public String getLockName() {
-        return lockName;
-    }
-
-    public void setLockName(String lockName) {
-        this.lockName = lockName;
-    }
-
-    public long getLockOwnerId() {
-        return lockOwnerId;
-    }
-
-    public void setLockOwnerId(long lockOwnerId) {
-        this.lockOwnerId = lockOwnerId;
-    }
-
-    public String getLockOwnerName() {
-        return lockOwnerName;
-    }
-
-    public void setLockOwnerName(String lockOwnerName) {
-        this.lockOwnerName = lockOwnerName;
-    }
-
-    public boolean getInNative() {
-        return inNative;
-    }
-
-    public void setInNative(boolean inNative) {
-        this.inNative = inNative;
-    }
-
-    public boolean getSuspended() {
-        return suspended;
-    }
-
-    public void setSuspended(boolean suspended) {
-        this.suspended = suspended;
-    }
-
-    public Thread.State getThreadState() {
-        return threadState;
-    }
-
-    public void setThreadState(Thread.State threadState) {
-        this.threadState = threadState;
-    }
-
-
 }

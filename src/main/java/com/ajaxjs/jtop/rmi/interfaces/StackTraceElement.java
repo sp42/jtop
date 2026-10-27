@@ -3,9 +3,11 @@ package com.ajaxjs.jtop.rmi.interfaces;
 import lombok.Data;
 
 import java.beans.ConstructorProperties;
+import java.io.Serializable;
+import java.util.Objects;
 
 @Data
-public class StackTraceElement {
+public class StackTraceElement implements Serializable {
     private static final long serialVersionUID = 6992337162326171013L;
 
     private String className;
@@ -24,6 +26,7 @@ public class StackTraceElement {
     public StackTraceElement(String declaringClass, String methodName, String fileName, int lineNumber) {
         if (declaringClass == null)
             throw new NullPointerException("Declaring class is null");
+
         if (methodName == null)
             throw new NullPointerException("Method name is null");
 
@@ -48,16 +51,19 @@ public class StackTraceElement {
     }
 
     public boolean equals(Object obj) {
-        if (obj == this) return true;
-        if (!(obj instanceof StackTraceElement)) return false;
+        if (obj == this)
+            return true;
+
+        if (!(obj instanceof StackTraceElement))
+            return false;
+
         StackTraceElement e = (StackTraceElement) obj;
 
-        return e.className.equals(className) && e.lineNumber == lineNumber && eq(methodName, e.methodName)
-                && eq(fileName, e.fileName);
+        return e.className.equals(className) && e.lineNumber == lineNumber && eq(methodName, e.methodName) && eq(fileName, e.fileName);
     }
 
     private static boolean eq(Object a, Object b) {
-        return a == b || (a != null && a.equals(b));
+        return Objects.equals(a, b);
     }
 
     public int hashCode() {

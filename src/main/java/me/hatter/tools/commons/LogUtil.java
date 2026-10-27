@@ -1,5 +1,7 @@
 package me.hatter.tools.commons;
 
+import java.io.PrintWriter;
+import java.io.StringWriter;
 import java.util.*;
 
 public class LogUtil {
@@ -72,5 +74,14 @@ public class LogUtil {
 
         msg.append(message);
         System.out.println(msg);
+    }
+
+    public static String printStackTrace(Throwable throwable) {
+        StringWriter sw = new StringWriter();
+        PrintWriter pw = new PrintWriter(sw);
+        throwable.printStackTrace(pw);
+        pw.flush();
+
+        return sw.toString();
     }
 }

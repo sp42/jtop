@@ -7,7 +7,7 @@ import java.io.PrintStream;
 
 public class NormalPrinter implements Printer {
 
-    private PrintStream out;
+    private final PrintStream out;
 
     public NormalPrinter() {
         this(System.out);

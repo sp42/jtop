@@ -28,5 +28,4 @@ public class JMemoryUsage implements Serializable {
         this.committed = committed;
         this.max = max;
     }
-
 }

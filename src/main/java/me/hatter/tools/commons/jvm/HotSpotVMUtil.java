@@ -12,9 +12,7 @@ import java.net.MalformedURLException;
 import java.util.*;
 
 public class HotSpotVMUtil {
-
-    public static enum JDKLib {
-
+    public enum JDKLib {
         TOOLS("tools.jar", //
                 Arrays.asList(JavaVendor.Sun, JavaVendor.Oracle, JavaVendor.Unknown), //
                 Arrays.asList(OS.Linux, OS.Unix, OS.MacOS)),
@@ -60,8 +58,8 @@ public class HotSpotVMUtil {
         BOOTSTRAP_CLASSPATH;
     }
 
-    private static Set<JDKLib> addedSysJDKLibs = new HashSet<HotSpotVMUtil.JDKLib>();
-    private static Set<JDKLib> addedBootJDKLibs = new HashSet<HotSpotVMUtil.JDKLib>();
+    private static final Set<JDKLib> addedSysJDKLibs = new HashSet<HotSpotVMUtil.JDKLib>();
+    private static final Set<JDKLib> addedBootJDKLibs = new HashSet<HotSpotVMUtil.JDKLib>();
 
     @SuppressWarnings("restriction")
     synchronized public static void autoAddToolsJarDependency(JDKTarget target, JDKLib jdkLib) {
@@ -69,18 +67,21 @@ public class HotSpotVMUtil {
         if ((!addedJDKLibs.contains(jdkLib)) && jdkLib.getSupportedJavaVendors().contains(Environment.getVendor())
                 && jdkLib.getSupportedOS().contains(OSUtil.getOS())) {
             File toolsJar = new File(Environment.JDK_HOME, "lib/" + jdkLib.getName()).getAbsoluteFile();
+
             if (!toolsJar.exists()) {
                 LogUtil.error("JDK " + jdkLib.getName() + " not found: " + toolsJar.getPath());
+
                 return;
             }
+
             try {
-                LogUtil.info("Add " + ((target == JDKTarget.SYSTEM_CLASSLOADER) ? "system" : "bootstrp")
-                        + " classloader jar url: " + toolsJar);
-                if (target == JDKTarget.SYSTEM_CLASSLOADER) {
+                LogUtil.info("Add " + ((target == JDKTarget.SYSTEM_CLASSLOADER) ? "system" : "bootstrp") + " classloader jar url: " + toolsJar);
+
+                if (target == JDKTarget.SYSTEM_CLASSLOADER)
                     ClassLoaderUtil.addURLs(ClassLoaderUtil.getSystemClassLoader(), toolsJar.toURI().toURL());
-                } else {
+                else
                     sun.misc.Launcher.getBootstrapClassPath().addURL(toolsJar.toURI().toURL());
-                }
+
                 addedJDKLibs.add(jdkLib);
             } catch (MalformedURLException e) {
                 throw new RuntimeException(e);

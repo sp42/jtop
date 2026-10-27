@@ -1,6 +1,5 @@
 package me.hatter.tools.commons.jvm;
 
-import com.ajaxjs.jtop.util.ExceptionUtil;
 import com.sun.tools.attach.VirtualMachine;
 import me.hatter.tools.commons.LogUtil;
 
@@ -39,15 +38,17 @@ public class HotSpotAttachTool {
 
     public void detach() {
         synchronized (refVM) {
-            if (refVM.get() != null) {
-                VirtualMachine vm = refVM.get();
-                refVM.set(null);
-                try {
-                    LogUtil.info("Detach from vm.");
-                    vm.detach();
-                } catch (IOException e) {
-                    LogUtil.error("Detach from vm failed: " + ExceptionUtil.printStackTrace(e));
-                }
+            if (refVM.get() == null)
+                return;
+
+            VirtualMachine vm = refVM.get();
+            refVM.set(null);
+
+            try {
+                LogUtil.info("Detach from vm.");
+                vm.detach();
+            } catch (IOException e) {
+                LogUtil.error("Detach from vm failed: " + LogUtil.printStackTrace(e));
             }
         }
     }

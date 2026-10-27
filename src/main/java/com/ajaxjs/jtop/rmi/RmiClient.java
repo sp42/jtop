@@ -5,7 +5,7 @@ import com.ajaxjs.jtop.management.JTopMXBean;
 import me.hatter.tools.commons.jmx.CustomJMXConnectTool;
 
 public class RmiClient {
-    private String pid;
+    private final String pid;
     private JTopMXBean jtopMXBean;
 
     public RmiClient(String pid) {

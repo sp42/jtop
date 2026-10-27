@@ -62,6 +62,7 @@ public class RmiServer {
             }
 
             long alloctedBytes = 0L;
+
             // only in sun/oracle JDK, OpenJDK cannot find "class com.sun.management.ThreadMXBean"
             if (CommonUtil.isClassPresent("com.sun.management.ThreadMXBean")) {
                 com.sun.management.ThreadMXBean sunThreadMxBean = (com.sun.management.ThreadMXBean) ManagementFactory.getThreadMXBean();

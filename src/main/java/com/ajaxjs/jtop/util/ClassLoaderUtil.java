@@ -96,7 +96,7 @@ public class ClassLoaderUtil {
             Object[] ags = new Object[]{name, b, off, len};
             m.invoke(classLoader, ags);
         } catch (Exception e) {
-            throw ExceptionUtil.wrapRuntimeException(e);
+            throw wrapRuntimeException(e);
         }
     }
 
@@ -119,7 +119,7 @@ public class ClassLoaderUtil {
         try {
             return (Class<T>) classLoader.loadClass(clazz);
         } catch (ClassNotFoundException e) {
-            throw ExceptionUtil.wrapRuntimeException(e);
+            throw wrapRuntimeException(e);
         }
     }
 
@@ -127,29 +127,29 @@ public class ClassLoaderUtil {
         try {
             return clazz.newInstance();
         } catch (Exception e) {
-            throw ExceptionUtil.wrapRuntimeException(e);
+            throw wrapRuntimeException(e);
         }
     }
 
     public static String findClassJarPath(Object classOrName) {
         String className;
 
-        if (classOrName instanceof String) {
+        if (classOrName instanceof String)
             className = (String) classOrName;
-        } else if (classOrName instanceof Class) {
+        else if (classOrName instanceof Class)
             className = ((Class<?>) classOrName).getName();
-        } else {
+        else
             throw new RuntimeException("Argument classOrName must be String or Class.");
-        }
 
         URL u = getClassLoaderByClass(ClassLoaderUtil.class).getResource(className.replace('.', '/') + ".class");
 
         if (u != null) {
             String f = u.getFile();
             f = f.substring(0, f.indexOf(".jar!/") + 4);
-            if (f.toLowerCase().startsWith("file:")) {
+
+            if (f.toLowerCase().startsWith("file:"))
                 f = f.substring("file:".length());
-            }
+
             return f;
         }
 
@@ -187,5 +187,12 @@ public class ClassLoaderUtil {
         }
 
         return total;
+    }
+
+    public static RuntimeException wrapRuntimeException(Throwable throwable) {
+        if (throwable instanceof RuntimeException)
+            return (RuntimeException) throwable;
+        else
+            return new RuntimeException(throwable);
     }
 }

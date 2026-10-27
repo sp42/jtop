@@ -3,14 +3,11 @@ package com.ajaxjs.jtop.util;
 import java.util.*;
 
 public class CollectionUtil {
-
     public interface Filter<T> {
-
         boolean accept(T object);
     }
 
     public interface Transformer<T, D> {
-
         D transform(T object);
     }
 
@@ -59,13 +56,8 @@ public class CollectionUtil {
 
     public static <T> List<T> minus(Collection<T> list, Collection<T> minusList) {
         final Set<T> minusSet = new HashSet<T>(minusList);
-        return filter(list, new CollectionUtil.Filter<T>() {
 
-            @Override
-            public boolean accept(T object) {
-                return (!minusSet.contains(object));
-            }
-        });
+        return filter(list, object -> (!minusSet.contains(object)));
     }
 
     public static <T> List<T> filter(Collection<T> list, Filter<T> filter) {
@@ -100,7 +92,7 @@ public class CollectionUtil {
         return ((list == null) || list.isEmpty()) ? null : list.get(0);
     }
 
-    @SuppressWarnings("unchecked")
+
     public static <T> List<T> objectToList(T object) {
         return new ArrayList<>(Collections.singletonList(object));
     }

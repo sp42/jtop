@@ -11,11 +11,11 @@ public class Agent {
 
     private static Instrumentation instrumentation;
 
-    public static void premain(String agentArgs, Instrumentation inst) throws Exception {
+    public static void premain(String agentArgs, Instrumentation inst) {
         domain(agentArgs, inst);
     }
 
-    public static void agentmain(String agentArgs, Instrumentation inst) throws Exception {
+    public static void agentmain(String agentArgs, Instrumentation inst) {
         domain(agentArgs, inst);
     }
 

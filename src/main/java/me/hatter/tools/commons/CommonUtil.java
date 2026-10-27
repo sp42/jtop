@@ -8,9 +8,8 @@ public class CommonUtil {
 
     public static boolean isClassPresent(String className) {
         synchronized (classPresentMap) {
-            if (classPresentMap.get(className) != null) {
+            if (classPresentMap.get(className) != null)
                 return classPresentMap.get(className);
-            }
         }
 
         boolean found = true;
@@ -24,6 +23,7 @@ public class CommonUtil {
         synchronized (classPresentMap) {
             classPresentMap.put(className, found);
         }
+
         return found;
     }
 }

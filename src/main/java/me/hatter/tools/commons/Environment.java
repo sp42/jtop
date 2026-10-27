@@ -15,9 +15,6 @@ public class Environment {
     public static final String JAVA_VENDOR = System.getProperty("java.vendor");
 
     public static final String JAVA_HOME = System.getProperty("java.home");
-    public static final String USER_DIR = System.getProperty("user.dir");
-    public static final String USER_NAME = System.getProperty("user.name");
-    public static final String USER_HOME = System.getProperty("user.home");
     public static final String JDK_HOME = Environment.JAVA_HOME.replaceAll("/jre(/)?$", "");
 
     @Getter

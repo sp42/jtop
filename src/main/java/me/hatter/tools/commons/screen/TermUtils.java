@@ -17,8 +17,7 @@ public class TermUtils {
     public static final int UNDERLINE = 4;
     public static final int BLINK = 5;
 
-    public static interface Fore {
-
+    public  interface Fore {
         int BLANK = 30;
         int RED = 31;
         int GREEN = 32;
@@ -31,8 +30,7 @@ public class TermUtils {
         int DEFAULT_UNDERLINE_OFF = 39;
     }
 
-    public static interface Back {
-
+    public  interface Back {
         int BLANK = 40;
         int RED = 41;
         int GREEN = 42;
@@ -44,8 +42,7 @@ public class TermUtils {
         int DEFAULT = 49;
     }
 
-    public static interface XFore {
-
+    public  interface XFore {
         int BLANK = 90;
         int RED = 91;
         int GREEN = 92;
@@ -56,8 +53,7 @@ public class TermUtils {
         int WHITE = 97;
     }
 
-    public static interface XBack {
-
+    public  interface XBack {
         int BLANK = 100;
         int RED = 101;
         int GREEN = 102;
